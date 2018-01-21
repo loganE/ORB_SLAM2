@@ -24,6 +24,7 @@
 #include<fstream>
 #include<chrono>
 #include<iomanip>
+#include<unistd.h>
 
 #include<opencv2/core/core.hpp>
 
@@ -119,7 +120,7 @@ int main(int argc, char **argv)
     cout << "mean tracking time: " << totaltime/nImages << endl;
 
     // Save camera trajectory
-    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");    
+    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");
 
     return 0;
 }

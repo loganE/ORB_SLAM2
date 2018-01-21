@@ -35,11 +35,7 @@
 #include <limits>
 #include <cstddef>
 
-#ifdef _MSC_VER
 #include <unordered_map>
-#else
-#include <tr1/unordered_map>
-#endif
 
 
 /** @addtogroup graph */
@@ -53,7 +49,7 @@ namespace g2o {
      that operate transparently on edges or vertices (see HyperGraphAction).
 
      The vertices are uniquely identified by an int id, while the edges are
-     identfied by their pointers. 
+     identfied by their pointers.
    */
   class  HyperGraph
   {
@@ -75,7 +71,7 @@ namespace g2o {
 
       class  Vertex;
       class  Edge;
-      
+
       /**
        * base hyper graph element, specialized in vertex and edge
        */
@@ -90,7 +86,7 @@ namespace g2o {
       typedef std::set<Edge*>                           EdgeSet;
       typedef std::set<Vertex*>                         VertexSet;
 
-      typedef std::tr1::unordered_map<int, Vertex*>     VertexIDMap;
+      typedef std::unordered_map<int, Vertex*>          VertexIDMap;
       typedef std::vector<Vertex*>                      VertexContainer;
 
       //! abstract Vertex, your types must derive from that one
@@ -101,7 +97,7 @@ namespace g2o {
           virtual ~Vertex();
           //! returns the id
           int id() const {return _id;}
-	  virtual void setId( int newId) { _id=newId; }
+    virtual void setId( int newId) { _id=newId; }
           //! returns the set of hyper-edges that are leaving/entering in this vertex
           const EdgeSet& edges() const {return _edges;}
           //! returns the set of hyper-edges that are leaving/entering in this vertex
@@ -112,7 +108,7 @@ namespace g2o {
           EdgeSet _edges;
       };
 
-      /** 
+      /**
        * Abstract Edge class. Your nice edge classes should inherit from that one.
        * An hyper-edge has pointers to the vertices it connects and stores them in a vector.
        */
